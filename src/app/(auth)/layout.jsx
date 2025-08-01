@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import "../styles/typography.css";
+import "../../styles/typography.css";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/hooks/AuthContext";
 import { StreamingProvider } from "@/hooks/StreamingContext";
