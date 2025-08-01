@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/hooks/AuthContext";
 import { StreamingProvider } from "@/hooks/StreamingContext";
 import { FavoritesProvider } from "@/hooks/SaveVideoContext";
+import { Suspense } from "react";
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +32,9 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <StreamingProvider>
             <FavoritesProvider>
+              <Suspense fallback={<div className="p-4">Loading navbar...</div>}>
+                <Navbar />
+              </Suspense>
               {children}
               <Toaster />
             </FavoritesProvider>

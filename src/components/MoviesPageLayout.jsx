@@ -71,7 +71,6 @@ export default function WatchPage() {
 
   return (
     <ProtectedRoute>
-      <Navbar />
       <div className="p-6 space-y-6 w-[90%] m-auto">
         <h1 className="text-3xl font-bold text-center">
           {query ? `Results for "${query}"` : "YouTube Videos"}
