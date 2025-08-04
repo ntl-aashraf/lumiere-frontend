@@ -21,7 +21,7 @@ export default function FavoritesPage() {
             My Favorites ({safeFavorites.length})
           </h1>
 
-          {safeFavorites.length < 1 && (
+          {safeFavorites.length > 0 && (
             <button
               onClick={clearFavorites}
               className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-200"
