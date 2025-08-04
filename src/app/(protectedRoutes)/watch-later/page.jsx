@@ -19,7 +19,7 @@ export default function WatchLaterPage() {
             Watch Later ({safeWatchLater.length})
           </h1>
 
-          {safeWatchLater.length < 1 && (
+          {safeWatchLater.length > 0 && (
             <button
               onClick={clearWatchLater}
               className="flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-200"

@@ -64,13 +64,13 @@ export const FavoritesProvider = ({ children }) => {
   }, [isAuthenticated]);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && user?.id) {
       loadUserData();
     } else {
       setFavorites([]);
       setWatchLater([]);
     }
-  }, [isAuthenticated, loadUserData]);
+  }, [isAuthenticated, loadUserData, user?.id]);
 
   const requireAuth = () => {
     if (!isAuthenticated || !user) {
