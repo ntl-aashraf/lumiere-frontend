@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, Suspense } from "react";
 import { useStreaming } from "@/hooks/StreamingContext";
 import MovieCard from "@/components/MovieCard";
 import Navbar from "@/components/Navbar";
@@ -71,7 +71,9 @@ export default function WatchPage() {
 
   return (
     <ProtectedRoute>
-      <Navbar />
+      <Suspense fallback={<div className="p-4"></div>}>
+        <Navbar />
+      </Suspense>
       <div className="p-6 space-y-6 w-[90%] m-auto">
         <h1 className="text-3xl font-bold text-center">
           {query ? `Results for "${query}"` : "YouTube Videos"}

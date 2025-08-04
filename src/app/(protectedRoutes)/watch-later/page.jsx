@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { useFavorites } from "@/hooks/SaveVideoContext";
 import MovieCard from "@/components/MovieCard";
 import Navbar from "@/components/Navbar";
@@ -12,7 +12,9 @@ export default function WatchLaterPage() {
 
   return (
     <>
-      <Navbar />
+      <Suspense fallback={<div className="p-4"></div>}>
+        <Navbar />
+      </Suspense>
 
       <div className="p-6 space-y-6 w-[90%] m-auto">
         <div className="flex justify-between items-center">

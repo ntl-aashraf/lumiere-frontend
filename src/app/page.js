@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useAuth } from "@/hooks/AuthContext";
 import { useStreaming } from "@/hooks/StreamingContext";
 import Navbar from "@/components/Navbar";
@@ -18,7 +18,9 @@ const Page = () => {
 
   return (
     <ProtectedRoute>
-      <Navbar />
+      <Suspense fallback={<div className="p-4"></div>}>
+        <Navbar />
+      </Suspense>
       <main
         id="landing"
         className="landing w-full min-h-[calc(100vh-75px)] flex flex-col items-center justify-center px-4 py-12 text-white text-center"
