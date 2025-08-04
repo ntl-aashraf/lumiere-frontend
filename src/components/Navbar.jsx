@@ -14,34 +14,10 @@ const Navbar = () => {
   const query = useSearchParams().get("q");
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const desktopSearchRef = useRef(null);
-  const mobileSearchRef = useRef(null);
+  const [desktopSearch, setDesktopSearch] = useState("");
+  const [mobileSearch, setMobileSearch] = useState("");
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
-
-  useEffect(() => {
-    const inputElements = [desktopSearchRef.current, mobileSearchRef.current];
-
-    const handleKeyDown = (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        const input = event.target;
-        if (input?.value) {
-          router.push(`/watch?q=${input.value}`);
-        }
-      }
-    };
-
-    inputElements.forEach((input) => {
-      if (input) input.addEventListener("keydown", handleKeyDown);
-    });
-
-    return () => {
-      inputElements.forEach((input) => {
-        if (input) input.removeEventListener("keydown", handleKeyDown);
-      });
-    };
-  }, [router]);
 
   return (
     <ProtectedRoute>
@@ -103,7 +79,14 @@ const Navbar = () => {
           <div className="mt-4 md:hidden flex flex-col gap-2">
             <input
               type="text"
-              ref={mobileSearchRef}
+              value={mobileSearch}
+              onChange={(e) => setMobileSearch(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && mobileSearch.trim()) {
+                  setMenuOpen(false);
+                  router.push(`/watch?q=${mobileSearch.trim()}`);
+                }
+              }}
               placeholder="Search here..."
               className="border border-gray-400 px-2 py-1 rounded"
             />
@@ -123,9 +106,14 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-3">
           <input
             type="text"
-            ref={desktopSearchRef}
+            value={desktopSearch}
+            onChange={(e) => setDesktopSearch(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && desktopSearch.trim()) {
+                router.push(`/watch?q=${desktopSearch.trim()}`);
+              }
+            }}
             className="border border-gray-400 focus:border-gray-800 px-2 py-1"
-            placeholder="Search here..."
           />
           <button
             onClick={() => {
