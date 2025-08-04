@@ -61,6 +61,14 @@ export const AuthProvider = ({ children }) => {
 
   // Check authentication status on mount
   useEffect(() => {
+    // Don't check auth on reset password page
+    if (
+      typeof window !== "undefined" &&
+      window.location.pathname === "/reset-password"
+    ) {
+      setLoading(false);
+      return;
+    }
     checkAuth();
   }, []);
 
