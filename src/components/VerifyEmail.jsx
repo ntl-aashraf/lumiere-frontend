@@ -25,7 +25,7 @@ const VerifyEmail = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        baseURL + `/api/auth/verify-email?token=${token}`
+        baseURL + `api/auth/verify-email?token=${token}`
       );
 
       setVerificationStatus("success");
