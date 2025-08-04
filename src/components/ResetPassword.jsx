@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { validatePassword } from "@/lib/validationFunctions";
 import { useAuth } from "@/hooks/AuthContext";
+import axios from "axios";
 
 const ResetPasswordPage = () => {
   const router = useRouter();

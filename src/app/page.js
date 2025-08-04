@@ -18,7 +18,7 @@ const Page = () => {
 
   return (
     <ProtectedRoute>
-      {/* <Navbar /> */}
+      <Navbar />
       <main
         id="landing"
         className="landing w-full min-h-[calc(100vh-75px)] flex flex-col items-center justify-center px-4 py-12 text-white text-center"

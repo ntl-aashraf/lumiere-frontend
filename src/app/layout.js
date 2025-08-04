@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
           <StreamingProvider>
             <FavoritesProvider>
               <Suspense fallback={<div className="p-4">Loading navbar...</div>}>
-                <Navbar />
+                {/* <Navbar /> */}
               </Suspense>
               {children}
               <Toaster />

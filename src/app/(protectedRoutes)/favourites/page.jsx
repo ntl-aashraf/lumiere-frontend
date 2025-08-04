@@ -14,6 +14,8 @@ export default function FavoritesPage() {
   const safeFavorites = Array.isArray(favorites) ? favorites : [];
   return (
     <ProtectedRoute>
+      <Navbar />
+
       <div className="p-6 space-y-6 w-[90%] m-auto">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold flex items-center gap-3">
